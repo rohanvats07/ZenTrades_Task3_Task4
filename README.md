@@ -22,4 +22,8 @@ With following Conditions:
 4) Entering the password as - SmartServTest@123 should redirect the user to a dashboard page which must look like below. (file : dashboard2.png). Any other password should throw an error.
 5) Clicking on the Forgot your password link should open any email client to send an email to support@smartserv.io for resetting the password.
 
+DashBoard:
 <img width="960" alt="Dashboard" src="https://github.com/rohanvats07/ZenTrades_Task3_Task4/assets/71967186/4d61efb9-9be6-4022-b950-0332dea69bd3">
+
+On clicking on Forgot Password
+<img width="960" alt="forgotpassword" src="https://github.com/rohanvats07/ZenTrades_Task3_Task4/assets/71967186/494b27c9-86bd-4b72-a8a2-a02cf9fe161d">
