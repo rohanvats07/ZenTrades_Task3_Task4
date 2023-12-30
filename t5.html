@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Metrics Dashboard</title>
+    <link rel="stylesheet" href="s5.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        h1 {
+            padding-left: 40px;
+        }
+
+        .value-box {
+            margin: 10px;
+            width: 270px;
+            height: 60px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .value-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background-color: rgb(17, 195, 165);
+        }
+
+        .value-box span,
+        .value-box span.green-text,
+        .value-box span.red-text {
+            color: black;
+            font-weight: bold;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .value-box span.green-text {
+            color: rgb(17, 195, 165);
+        }
+
+        .value-box span.red-text {
+            color: red;
+        }
+
+        .value-box p {
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        .top-values {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .chart-container {
+            margin: 20px 1%; 
+            float: left; 
+        }
+
+        .chart-container {
+            width: 90%;
+        }
+
+        .section-container {
+            margin-top: 30px;
+            width: 50%;
+            box-sizing: border-box;
+            float: left;
+            padding-left: 50px;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            width: 100%;
+            height: auto;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+</head>
+<body>
+    <h1><b>Company Metrics</b></h1>
+    <header>
+        <div class="top-values">
+            <div class="value-box">
+                <span class="green-text">$406,411.29</span>
+                <p>Total Revenue</p>
+            </div>
+            <div class="value-box">
+                <span>$620</span>
+                <p>Total Jobs Avg</p>
+            </div>
+            <div class="value-box">
+                <span>$655</span>
+                <p>Tickets Created</p>
+            </div>
+            <div class="value-box">
+                <span>$735</span>
+                <p>Tickets Scheduled</p>
+            </div>
+            <div class="value-box">
+                <span class="red-text">$110,448.8</span>
+                <p>Outstanding Amount</p>
+            </div>
+            <div class="value-box">
+                <span>$105</span>
+                <p>Memberships Sold</p>
+            </div>
+            <div class="value-box">
+                <span>$436</span>
+                <p>Jobs Completed</p>
+            </div>
+            <div class="value-box">
+                <span>$65</span>
+                <p>Total Canceled</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-container">
+        <h2>Revenue by Job Location</h2>
+        <div class="chart-container">
+            <canvas id="revenueLocationChart"></canvas>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <h2>Revenue by Job Type</h2>
+        <div class="chart-container">
+            <canvas id="revenueTypeChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctxLocation = document.getElementById('revenueLocationChart');
+            if (!ctxLocation) {
+                console.error('Canvas element for location chart not found.');
+                return;
+            }
+    
+            var chartLocation = new Chart(ctxLocation, {
+                type: 'bar',
+                data: {
+                    labels: ['Everett', 'Seattle', 'Lynnwood', 'Bothell', 'Mukilteo', 'Edmonds'],
+                    datasets: [{
+                        label: 'Revenue for November 2019',
+                        data: [64000, 61000, 34000, 33000, 31000, 24000],
+                        backgroundColor: 'rgb(17, 195, 165)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            barPercentage: 0.5,
+                            offset: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Revenue for November 2019',
+                            weight: 'bold'
+                        }
+                    }
+                }
+            });
+    
+            var ctxType = document.getElementById('revenueTypeChart');
+            if (!ctxType) {
+                console.error('Canvas element for type chart not found.');
+                return;
+            }
+    
+            var chartType = new Chart(ctxType, {
+                type: 'bar',
+                data: {
+                    labels: ['Service Plumbing', 'Bid Work HVAC', 'Service HVAC', 'Bid Work Plumbing', 'HWT Replacement', 'Maintenance', 'Material Sale'],
+                    datasets: [{
+                        label: 'Revenue for November 2019',
+                        data: [150000, 90000, 59500, 57000, 30000, 24000, 5000],
+                        backgroundColor: 'rgb(17, 195, 165)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            barPercentage: 0.5,
+                            offset: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Revenue for November 2019',
+                            weight: 'bold'
+                        }
+                    }
+                }
+            });
+        });
+    </script>    
+
+</body>
+</html>

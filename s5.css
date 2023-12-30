@@ -1,0 +1,51 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: rgb(166, 166, 166);
+}
+
+.top-values {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-revenue {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.other-values {
+    display: inline-flex;
+    gap: 20px;
+}
+
+.value-box {
+    background-color: #ffffff;
+}
+
+main {
+    padding: 20px;
+}
+
+.revenue-charts {
+    display: flex;
+    gap: 20px;
+}
+
+.chart-container {
+    flex: 1;
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+canvas {
+    width: 100%;
+    height: 250px;
+}
